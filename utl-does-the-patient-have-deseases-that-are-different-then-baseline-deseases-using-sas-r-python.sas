@@ -13,6 +13,8 @@ The variable pattern defines the disease each patient has at each visit
 
   SOLUTIONS
 
+    0 sas datastep
+      Mark Keintz <mkeintz@OUTLOOK.COM>
     1 sas sql
     2 r sql
     3 python sql
@@ -113,6 +115,48 @@ run;quit;
 /*   13    3      10001      diff        5                                                                                */
 /*                                                                                                                        */
 /**************************************************************************************************************************/
+
+/*___        _       _            _
+ / _ \    __| | __ _| |_ __ _ ___| |_ ___ _ __
+| | | |  / _` |/ _` | __/ _` / __| __/ _ \ `_ \
+| |_| | | (_| | (_| | || (_| \__ \ ||  __/ |_) |
+ \___/   \__,_|\__,_|\__\__,_|___/\__\___| .__/
+                                         |_|
+*/
+
+data want (drop=_:);
+
+  merge have (where=(visit=1) rename=(pattern=_ref_pattern))
+        have ;
+  by id;
+
+  if visit=1 then want="ref ";
+  else want=ifc(pattern=_ref_pattern,"same","diff");
+
+run;
+
+/**************************************************************************************************************************/
+/*                                                                                                                        */
+/*                               SOLUTION MATCHES REQUEST                                                                 */
+/*                                                                                                                        */
+/*   ID      VISIT    PATTERN    REQUEST    WANT                                                                          */
+/*                                                                                                                        */
+/*   1         1       10000      ref       ref                                                                           */
+/*   1         2       00000      diff      diff                                                                          */
+/*   1         3       00000      diff      diff                                                                          */
+/*   1         4       10000      same      same                                                                          */
+/*   1         5       00000      diff      diff                                                                          */
+/*   2         1       10000      ref       ref                                                                           */
+/*   2         2       00010      diff      diff                                                                          */
+/*   2         3       10000      same      same                                                                          */
+/*   3         1       00010      ref       ref                                                                           */
+/*   3         2       00000      diff      diff                                                                          */
+/*   3         3       00010      same      same                                                                          */
+/*   3         4       10000      diff      diff                                                                          */
+/*   3         5       10001      diff      diff                                                                          */
+/*                                                                                                                        */
+/**************************************************************************************************************************/
+
 
 /*                             _
 / |  ___  __ _ ___   ___  __ _| |
