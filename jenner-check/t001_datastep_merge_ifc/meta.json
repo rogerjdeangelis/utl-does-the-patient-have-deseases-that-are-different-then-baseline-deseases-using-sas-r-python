@@ -1,0 +1,7 @@
+{
+  "bundle": "t001_datastep_merge_ifc",
+  "source_file": "utl-does-the-patient-have-deseases-that-are-different-then-baseline-deseases-using-sas-r-python.sas",
+  "source_blob_sha": "a65211d44d6f49bca28522bf23dcb5bf32985050",
+  "source_commit": "7b6a1b9db8706110faa6c3b8487c869d405ca303",
+  "notes": "Solution 0: DATA step self-merge on id, rename visit=1 pattern to _ref_pattern, classify each visit ref/same/diff with ifc(). Inline cards4 data (13 rows) verbatim from the source; added a PROC PRINT to surface the want dataset. No path/libname/data substitution needed."
+}

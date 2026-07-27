@@ -1,0 +1,16 @@
+
+  Obs  ID  VISIT  request  pattern  want
+-----  --  -----  -------  -------  ----
+    1  1       1  ref      10000    ref
+    2  1       2  diff     00000    diff
+    3  1       3  diff     00000    diff
+    4  1       4  same     10000    same
+    5  1       5  diff     00000    diff
+    6  2       1  ref      10000    ref
+    7  2       2  diff     00010    diff
+    8  2       3  same     10000    same
+    9  3       1  ref      00010    ref
+   10  3       2  diff     00000    diff
+   11  3       3  same     00010    same
+   12  3       4  diff     10000    diff
+   13  3       5  diff     10001    diff
